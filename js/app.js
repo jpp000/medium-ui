@@ -1,23 +1,19 @@
 var app = angular.module("mediumApp", ["ui.router", "ui.bootstrap"]);
 
-app.config(function ($provide, $httpProvider) {
-  $httpProvider.interceptors.push(function () {
-    return {
-      request: function (config) {
-        console.log("Tentando carregar:", config.url);
-        return config;
-      },
-    };
-  });
-});
-
 app.config(function ($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/posts");
 
   $stateProvider.state({
     name: "home",
-    url: "/",
+    url: "/posts",
     templateUrl: "view/home.html",
     controller: "homeController",
+  });
+
+  $stateProvider.state({
+    name: "post",
+    url: "/posts/{postId}",
+    templateUrl: "view/post-details.html",
+    controller: "PostDetailsController",
   });
 });

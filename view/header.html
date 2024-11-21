@@ -1,37 +1,28 @@
-<header
-  class="flex justify-between items-center p-1 px-4 border-b"
-  style="border-color: var(--min-border)"
->
-  <div class="flex items-center space-x-4">
-    <img
-      src="../assets/images/amigo.png"
-      alt="Amigo Logo"
-      class="w-25"
-      onclick="window.location.href='/'"
-      style="cursor: pointer"
-    />
-
+<header class="header">
+  <div class="header-left">
+    <a ui-sref="home">
+      <img
+        src="../assets/images/amigo.png"
+        alt="Amigo Logo"
+        class="header-logo"
+      />
+    </a>
     <input
-      class="placeholder:text-black/60 placeholder:font-light placeholder:text-xl bg-gray-50 w-30 rounded-full py-3 pl-3 pr-3 doca-icon doca-icon__search"
+      class="header-search"
       placeholder="Search"
       type="text"
       name="search"
     />
   </div>
-
-  <nav class="flex items-center space-x-4 font-light text-gray-600" style="font-size: 14px;">
-    <div
-      ng-click="openCreatePostModal()"
-      class="flex items-center hover:text-black duration-100 gap-2"
-      style="cursor: pointer"
-    >
+  <nav class="nav">
+    <div class="nav-item nav-item-write" ng-click="openCreatePostModal()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.00"
         stroke="currentColor"
-        class="w-8 h-8"
+        class="nav-icon"
       >
         <path
           stroke-linecap="square"
@@ -39,26 +30,16 @@
           d="M16.862 4.487l1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
         />
       </svg>
-      Write
+      <span class="write-span">Write</span>
     </div>
 
-    <div class="flex px-3 items-center gap-3">
-      <div
-        class="px-2.5 py-2 bg-blue-500/90 hover:bg-blue-700/80 duration-100 rounded-full text-white whitespace-nowrap"
-        style="cursor: pointer"
-      >
-        Sign up
-      </div>
-      <div
-        class="hover:text-black duration-100 whitespace-nowrap"
-        style="cursor: pointer"
-      >
-        Sign in
-      </div>
+    <div class="nav-item">
+      <div class="signup-button" ng-click="openRegisterModal()">Sign up</div>
+      <div class="signin-button" ng-click="openLoginModal()">Sign in</div>
     </div>
 
     <svg
-      class="w-12 h-12 text-gray-300 hover:text-gray-500 duration-100"
+      class="nav-circle-icon"
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden="true"

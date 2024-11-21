@@ -1,0 +1,149 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title">Cadastro de Usuário</h3>
+    <button type="button" class="close" ng-click="cancel()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form name="registrationForm" novalidate>
+      <div class="form-group" ng-class="{'has-error': registrationForm.name.$invalid && registrationForm.name.$dirty}">
+        <label for="userName">Nome</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userName"
+          name="name"
+          ng-model="user.name"
+          placeholder="Digite seu nome completo"
+          required
+        />
+        <p ng-show="registrationForm.name.$invalid && registrationForm.name.$dirty" class="help-block">O nome é obrigatório.</p>
+      </div>
+      <div class="form-group" ng-class="{'has-error': registrationForm.email.$invalid && registrationForm.email.$dirty}">
+        <label for="userEmail">E-mail</label>
+        <input
+          type="email"
+          class="form-control"
+          id="userEmail"
+          name="email"
+          ng-model="user.email"
+          placeholder="Digite seu e-mail"
+          required
+        />
+        <p ng-show="registrationForm.email.$invalid && registrationForm.email.$dirty" class="help-block">
+          <span ng-show="registrationForm.email.$error.required">O e-mail é obrigatório.</span>
+          <span ng-show="registrationForm.email.$error.email">Digite um e-mail válido.</span>
+        </p>
+      </div>
+      <div class="form-group" ng-class="{'has-error': registrationForm.password.$invalid && registrationForm.password.$dirty}">
+        <label for="userPassword">Senha</label>
+        <input
+          type="password"
+          class="form-control"
+          id="userPassword"
+          name="password"
+          ng-model="user.password"
+          placeholder="Digite sua senha"
+          required
+          ng-minlength="6"
+        />
+        <p ng-show="registrationForm.password.$invalid && registrationForm.password.$dirty" class="help-block">
+          <span ng-show="registrationForm.password.$error.required">A senha é obrigatória.</span>
+          <span ng-show="registrationForm.password.$error.minlength">A senha deve ter pelo menos 6 caracteres.</span>
+        </p>
+      </div>
+    </form>
+  </div>
+  <div style="display: flex; justify-content: space-between; margin: 15px; font-size: x-large;">
+    <button class="btn btn-secondary" ng-click="cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="register()" ng-disabled="registrationForm.$invalid">Registrar</button>
+  </div>
+</div>
+
+<style>
+  .modal-content {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 1rem;
+  }
+  .modal-title {
+    color: #333;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  .close {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    opacity: 0.5;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    appearance: none;
+  }
+  .close:hover {
+    color: #000;
+    opacity: 0.75;
+  }
+  .modal-body {
+    padding: 1.5rem;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  label {
+    color: #555;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+  .help-block {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  .modal-footer {
+    border-top: 1px solid #e9ecef;
+    padding: 1rem;
+  }
+  .btn {
+    border-radius: 4px;
+    font-size: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+  }
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  .btn:disabled {
+    opacity: 0.65;
+  }
+</style>
+

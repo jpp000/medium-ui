@@ -1,0 +1,66 @@
+<div ng-if="posts.length > 0">
+  <div class="post" ng-repeat="post in posts">
+    <div class="post-content-card">
+      <div class="user-info">
+        <div class="user-img">
+          <svg
+            class="nav-circle-icon"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+
+        <div>
+          <a href="#">
+            <div class="user-name">{{post.userName}}</div>
+          </a>
+          <div class="post-date">{{post.date}}</div>
+        </div>
+      </div>
+
+      <a ui-sref="post({ postId: post.id })">
+        <div class="post-info">
+          <h2 class="post-title">{{post.title}}</h2>
+          <p class="post-text">{{post.content}}</p>
+        </div>
+      </a>
+
+      <div class="doca post-actions">
+        <div class="post-action-buttons">
+          <button
+            class="doca-button doca-button--large doca-button--tertiary"
+            ng-click="likePost(post)"
+          >
+            <i
+              class="doca-icon"
+              ng-class="post.isLikedByUser ? 'doca-icon__hands doca-icon--solid' : 'doca-icon__hands'"
+            ></i>
+            <p class="doca-text--large">{{ post.likes }}</p>
+          </button>
+
+          <button class="doca-button doca-button--large doca-button--tertiary">
+            <i class="doca-icon doca-icon__comments doca-icon--large"></i>
+            <p class="doca-text--large">70K</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-if="posts.length === 0" class="no-posts-container">
+  <h2 class="no-posts-title">Nenhum post encontrado</h2>
+  <p class="no-posts-message">
+    Parece que ainda não há posts para exibir. Que tal criar o primeiro?
+  </p>
+  <button class="create-post-button" ng-click="openCreatePostModal()">
+    Criar Post
+  </button>
+</div>
