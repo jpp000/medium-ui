@@ -1,30 +1,45 @@
-<div class="modal-header">
-  <h3 class="modal-title">Criar Novo Post</h3>
+<div class="modal-header bg-gray-100 px-4 py-3 rounded-t">
+  <h3 class="text-lg font-semibold text-gray-800">Criar Novo Post</h3>
 </div>
-<div class="modal-body">
-  <form>
+<div class="modal-body p-4">
+  <form class="space-y-4">
     <div class="form-group">
-      <label for="postTitle">Título</label>
+      <label for="postTitle" class="block text-sm font-medium text-gray-700">
+        Título
+      </label>
       <input
         type="text"
         id="postTitle"
-        class="form-control"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         ng-model="post.title"
         placeholder="Digite o título do post"
       />
     </div>
     <div class="form-group">
-      <label for="postContent">Conteúdo</label>
+      <label for="postContent" class="block text-sm font-medium text-gray-700">
+        Conteúdo
+      </label>
       <textarea
         id="postContent"
-        class="form-control"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         ng-model="post.content"
         placeholder="Digite o conteúdo do post"
+        rows="4"
       ></textarea>
     </div>
   </form>
 </div>
-<div class="modal-footer">
-  <button class="btn btn-primary" ng-click="submit()">Salvar</button>
-  <button class="btn btn-secondary" ng-click="cancel()">Cancelar</button>
+<div class="modal-footer flex justify-between items-center bg-gray-100 px-4 py-3 rounded-b">
+  <button
+    class="btn bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
+    ng-click="cancel()"
+  >
+    Cancelar
+  </button>
+  <button
+    class="btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+    ng-click="submit()"
+  >
+    Salvar
+  </button>
 </div>
