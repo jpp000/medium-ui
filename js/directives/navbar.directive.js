@@ -1,8 +1,8 @@
 app.directive("navbar", () => {
   return {
-    templateUrl: "view/header.html",
+    templateUrl: "view/navbar.html",
     replace: true,
     restrict: "E",
-    controller: "NavbarController",
+    controller: "navbarController",
   };
 });

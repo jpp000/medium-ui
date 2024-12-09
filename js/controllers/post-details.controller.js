@@ -1,18 +1,32 @@
-app.controller("PostDetailsController", [
+app.controller("postDetailsController", [
+  "$rootScope",
   "$scope",
   "$stateParams",
-  "PostService",
-  function ($scope, $stateParams, PostService) {
-    const postId = parseInt($stateParams.postId, 10);
+  "postService",
+  "userService",
+  function ($rootScope, $scope, $stateParams, postService, userService) {
+    $scope.isUserLoggedIn = $rootScope.userLogged;
+    $scope.post = {};
 
-    console.log(postId);
+    const postId = parseInt($stateParams.postId);
 
-    const post = PostService.getPostById(postId);
+    postService.getPostById(postId).then((res) => {
+      $scope.post = res.data.data;
+    });
 
-    if (!post) {
-      console.log("Post nao encontrado");
-    }
+    $scope.likePost = function (post) {
+      if (!post.is_liked) {
+        postService.likePost(post.id).then(() => {
+          window.location.reload();
+        });
+      }
+      $scope.dislikePost(post.id);
+    };
 
-    $scope.post = post;
+    $scope.dislikePost = function (postId) {
+      postService.dislikePost(postId).then(() => {
+        window.location.reload();
+      });
+    };
   },
 ]);

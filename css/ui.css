@@ -113,6 +113,16 @@
   transition: color 0.1s;
 }
 
+.logout-button {
+  background-color: rgb(247, 52, 52);
+  padding: 6px;
+  border-radius: 9999px;
+}
+
+.logout-button:hover {
+  background-color: red;
+}
+
 /* Estilo do ícone circular */
 .nav-circle-icon {
   width: 40px;
@@ -147,6 +157,7 @@
   max-width: 50rem;
   margin: auto;
   margin-top: 4rem;
+  margin-bottom: 4rem;
   background-color: white;
   border-radius: 0.75rem;
   border: 1px solid #f3f4f6;
@@ -165,14 +176,18 @@
   margin-top: 3px;
 }
 
+.a-post-info:hover {
+  text-decoration: none;
+}
+
+.a-post-info:hover .post-title {
+  text-decoration: underline;
+}
+
 .post-info {
   margin-left: 6px;
 }
 
-.post-info:hover .post-title,
-.post-info:hover .post-text {
-  text-decoration: underline;
-}
 .avatar {
   width: 2.5rem;
   height: 2.5rem;
@@ -297,7 +312,8 @@ post-main {
   background-color: white;
 }
 .post-container {
-  max-width: 740px;
+  margin: auto;
+  max-width: 700px;
   margin: 0 auto;
   padding: 2rem 20px;
 }
@@ -307,10 +323,8 @@ article h2 {
 }
 .author-info {
   margin-left: 11px;
-
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
 }
 .author-avatar {
   width: 50px;
@@ -341,6 +355,7 @@ article h2 {
 .post-content p {
   font-family: serif;
   margin-bottom: 1rem;
+  margin-top: 3rem;
   font-size: large;
 }
 .post-footer {

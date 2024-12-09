@@ -15,7 +15,7 @@
     />
   </div>
   <nav class="nav">
-    <div class="nav-item nav-item-write" ng-click="openCreatePostModal()">
+    <div class="nav-item nav-item-write" ng-if="isUserLoggedIn" ng-click="openCreatePostModal()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -33,7 +33,11 @@
       <span class="write-span">Write</span>
     </div>
 
-    <div class="nav-item">
+    <div class="nav-item logout-button" ng-if="isUserLoggedIn" ng-click="logOut()">
+      Log out
+    </div>
+
+    <div class="nav-item" ng-if="!isUserLoggedIn">
       <div class="signup-button" ng-click="openRegisterModal()">Sign up</div>
       <div class="signin-button" ng-click="openLoginModal()">Sign in</div>
     </div>

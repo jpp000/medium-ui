@@ -33,11 +33,11 @@
           ng-model="user.password"
           placeholder="Digite sua senha"
           required
-          ng-minlength="6"
+          ng-minlength="3"
         />
         <p ng-show="loginForm.password.$invalid && loginForm.password.$dirty" class="help-block">
           <span ng-show="loginForm.password.$error.required">A senha é obrigatória.</span>
-          <span ng-show="loginForm.password.$error.minlength">A senha deve ter pelo menos 6 caracteres.</span>
+          <span ng-show="loginForm.password.$error.minlength">A senha deve ter pelo menos 3 caracteres.</span>
         </p>
       </div>
     </form>

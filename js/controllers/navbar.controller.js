@@ -1,8 +1,16 @@
-app.controller("NavbarController", [
+app.controller("navbarController", [
   "$scope",
   "$modal",
-  ($scope, $modal) => {
+  "$rootScope",
+  ($scope, $modal, $rootScope) => {
     $scope.openCreatePostModal = () => {
+      if (!$rootScope.userLogged) {
+        return $modal.open({
+          templateUrl: "view/register-modal.html",
+          controller: "userModalController",
+        });
+      }
+
       $modal.open({
         templateUrl: "view/create-post-modal.html",
         controller: "createPostModalController",
@@ -22,5 +30,23 @@ app.controller("NavbarController", [
         controller: "userModalController",
       });
     };
+
+    $scope.logOut = function () {
+      Swal.fire({
+        title: "Deseja sair?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        reverseButtons: true,
+        confirmButtonText: "Sim",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $rootScope.userLogged = false;
+          localStorage.clear();
+          window.location.reload();
+        }
+      });
+    }
   },
 ]);

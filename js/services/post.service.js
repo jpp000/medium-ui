@@ -1,29 +1,29 @@
-app.service("PostService", function () {
-  const posts = [
-    {
-      id: 1,
-      userName: "User 1",
-      date: "Feb 4, 2024",
-      title: "Title 1",
-      content: "Content 1",
-      likes: 10,
-      isLikedByUser: false,
-    },
-    {
-      id: 2,
-      userName: "User 2",
-      date: "Feb 5, 2024",
-      title: "Title 2",
-      content: "Content 2",
-      likes: 5,
-      isLikedByUser: true,
-    },
-  ];
+app.service("postService", function ($http) {
+  this.getPosts = function () {
+    return $http.get(`${baseUrl}posts/?page=1`);
+  };
 
-  this.getPosts = () => 
-    posts ?? []
-  
-  this.getPostById = (id) => posts.find(post => post.id === id)
+  this.getPostById = function (id) {
+    return $http.get(`${baseUrl}posts/${id}`);
+  };
 
-  this.createPost = (post) => posts.push(post)
+  this.createPost = function (postData) {
+    return $http.post(`${baseUrl}posts`, postData);
+  };
+
+  this.updatePost = function (id, postData) {
+    return $http.put(`${baseUrl}posts/${id}`, postData)
+  }
+
+  this.deletePost = function (id) {
+    return $http.delete(`${baseUrl}posts/${id}`);
+  }
+
+  this.likePost = function (id) {
+    return $http.post(`${baseUrl}posts/${id}/like`);
+  }
+
+  this.dislikePost = function (id) {
+    return $http.post(`${baseUrl}posts/${id}/dislike`);
+  }
 });

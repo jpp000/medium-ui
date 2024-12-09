@@ -18,31 +18,34 @@
           />
         </svg>
         <div>
-          <p class="author-name">{{post.userName}}</p>
-          <p class="post-meta">{{post.date}} · 5 min de leitura</p>
+          <p class="author-name">{{post.user.name}}</p>
+          <p class="post-meta">
+            {{post.created_at | formatDate : 'MMM DD, YYYY'}} · 5 min de leitura
+          </p>
         </div>
       </div>
       <div class="post-content">
         <p>{{post.content}}</p>
       </div>
     </article>
-    <div class="post-footer">
-      <button class="action-button-article">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+    <div class="doca post-actions" style="margin-top: 3rem;">
+      <div class="post-action-buttons">
+        <button
+          class="doca-button doca-button--large doca-button--tertiary"
+          ng-click="likePost(post)"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
-          />
-        </svg>
-        {{post.likes}} Curtidas
-      </button>
+          <i
+            class="doca-icon"
+            ng-class="post.is_liked ? 'doca-icon__hands doca-icon--solid' : 'doca-icon__hands'"
+          ></i>
+          <p class="doca-text--large">{{ post.total_likes }}</p>
+        </button>
+
+        <button class="doca-button doca-button--large doca-button--tertiary">
+          <i class="doca-icon doca-icon__comments doca-icon--large"></i>
+          <p class="doca-text--large">70K</p>
+        </button>
+      </div>
     </div>
   </div>
 </main>
